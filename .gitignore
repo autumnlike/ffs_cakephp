@@ -1,25 +1,32 @@
-# CakePHP 3
-
-/vendor/*
-/config/app.php
-
-/tmp/cache/models/*
-!/tmp/cache/models/empty
-/tmp/cache/persistent/*
-!/tmp/cache/persistent/empty
-/tmp/cache/views/*
-!/tmp/cache/views/empty
-/tmp/sessions/*
-!/tmp/sessions/empty
-/tmp/tests/*
-!/tmp/tests/empty
-
+# CakePHP specific files #
+##########################
+/bin/*
+/config/.env
+/config/app_local.php
 /logs/*
-!/logs/empty
+/tmp/*
+/vendor/*
+.phpunit.result.cache
+!cake
+!cake.php
+.php_cs.cache
 
-# CakePHP 2
 
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.directory
+
+# Tool specific files #
+#######################
+# vim
+*~
+*.swp
+*.swo
