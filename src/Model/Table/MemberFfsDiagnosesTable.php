@@ -84,9 +84,9 @@ class MemberFfsDiagnosesTable extends Table
             ->allowEmptyString('e');
 
         $validator
-            ->scalar('for_type')
-            ->maxLength('for_type', 255)
-            ->allowEmptyString('for_type');
+            ->scalar('four_type')
+            ->maxLength('four_type', 255)
+            ->allowEmptyString('four_type');
 
         $validator
             ->scalar('ninety-one_type')
