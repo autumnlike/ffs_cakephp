@@ -89,9 +89,9 @@ class MemberFfsDiagnosesTable extends Table
             ->allowEmptyString('four_type');
 
         $validator
-            ->scalar('ninety-one_type')
-            ->maxLength('ninety-one_type', 255)
-            ->allowEmptyString('ninety-one_type');
+            ->scalar('ninety_one_type')
+            ->maxLength('ninety_one_type', 255)
+            ->allowEmptyString('ninety_one_type');
 
         return $validator;
     }

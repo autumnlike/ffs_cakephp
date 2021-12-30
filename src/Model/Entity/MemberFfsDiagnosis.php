@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property int|null $d
  * @property int|null $e
  * @property string|null $four_type
- * @property string|null $ninety-one_type
+ * @property string|null $ninety_one_type
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -41,7 +41,7 @@ class MemberFfsDiagnosis extends Entity
         'd' => true,
         'e' => true,
         'four_type' => true,
-        'ninety-one_type' => true,
+        'ninety_one_type' => true,
         'created' => true,
         'modified' => true,
         'member' => true,

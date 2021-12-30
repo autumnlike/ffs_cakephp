@@ -147,7 +147,7 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => true,
             ])
-            ->addColumn('ninety-one_type', 'string', [
+            ->addColumn('ninety_one_type', 'string', [
                 'comment' => '91タイプ分類, Ex: ACB, BC, D等',
                 'default' => null,
                 'limit' => 255,

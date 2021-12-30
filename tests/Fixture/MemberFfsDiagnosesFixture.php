@@ -27,9 +27,9 @@ class MemberFfsDiagnosesFixture extends TestFixture
                 'd' => 1,
                 'e' => 1,
                 'four_type' => 'Lorem ipsum dolor sit amet',
-                'ninety-one_type' => 'Lorem ipsum dolor sit amet',
-                'created' => '2021-12-30 03:16:59',
-                'modified' => '2021-12-30 03:16:59',
+                'ninety_one_type' => 'Lorem ipsum dolor sit amet',
+                'created' => '2021-12-30 09:39:57',
+                'modified' => '2021-12-30 09:39:57',
             ],
         ];
         parent::init();
