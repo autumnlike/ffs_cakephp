@@ -7,7 +7,7 @@
 <div class="members index row">
     <h2><?= __('メンバー一覧') ?></h3>
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('Members.email', '名前') ?></th>
@@ -24,7 +24,8 @@
                 <?php foreach ($members as $member): ?>
                 <tr>
                     <td>
-                        <?= h($member->name) ?><br/>
+                        <?= $this->Html->link($member->name, ['action' => 'view', $member->id]) ?>
+                        <br/>
                         <span class="fw-lighter small"><?= h($member->email) ?></span>
                     </td>
                     <td><?= h($member->member_ffs_diagnosis->a) ?></td>

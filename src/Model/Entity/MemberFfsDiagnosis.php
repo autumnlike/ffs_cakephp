@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * MemberFfsDiagnosis Entity
@@ -46,4 +47,50 @@ class MemberFfsDiagnosis extends Entity
         'modified' => true,
         'member' => true,
     ];
+
+    /**
+     * 91type をもとに因子説明を返す
+     *
+     * @return string
+     */
+    public function description(): string
+    {
+        $types = $this->getTypes();
+
+        if (count($types) === 1) {
+            // 1因子なら長い説明を
+            return $types[0]->long_description;
+        }
+
+        # 複数因子の場合は説明を連結
+        $description = null;
+        foreach ($types as $key => $type) {
+            if ($key === 0) {
+                $description = 'まず、';
+            } elseif (count($types) === $key-1) {
+                $description .= '最後に、';
+            } else {
+                $description .= '次に、';
+            }
+            $description .= $type->short_description;
+        }
+        return $description;
+    }
+
+    /**
+     * 91typeを取得
+     *
+     * @return array
+     */
+    public function getTypes(): array
+    {
+        $types = str_split($this->ninety_one_type, 1);
+        $ffsTypes = [];
+        $table = TableRegistry::getTableLocator()->get('FfsTypes');
+        // 順番を因子順にするために1つずつ取得
+        foreach ($types as $type) {
+            $ffsTypes[] = $table->findByLabel($type)->first();
+        }
+        return $ffsTypes;
+    }
 }

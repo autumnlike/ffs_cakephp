@@ -46,13 +46,13 @@ class MembersController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    // public function view($id = null)
-    // {
-    //     $member = $this->Members->get($id, [
-    //         'contain' => ['MemberFfsDiagnoses', 'MemberStresses', 'TeamMembers'],
-    //     ]);
+    public function view($id = null)
+    {
+        $member = $this->Members->get($id, [
+            'contain' => ['MemberFfsDiagnoses', 'MemberStresses'],
+        ]);
 
-    //     $this->set(compact('member'));
-    //     $this->viewBuilder()->setOption('serialize', ['member']);
-    // }
+        $this->set(compact('member'));
+        $this->viewBuilder()->setOption('serialize', ['member']);
+    }
 }
