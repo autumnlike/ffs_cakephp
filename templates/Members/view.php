@@ -6,6 +6,7 @@
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <div class="members view row">
+    <h3><?= h($member->name) ?></h3>
     <canvas id="diagnosisChart"></canvas>
 
     <div class="row mt-3">
