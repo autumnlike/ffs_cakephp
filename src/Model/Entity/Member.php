@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\MemberFfsDiagnosis[] $member_ffs_diagnoses
+ * @property \App\Model\Entity\MemberFfsDiagnosis $member_ffs_diagnosis
  * @property \App\Model\Entity\MemberStress[] $member_stresses
  * @property \App\Model\Entity\TeamMember[] $team_members
  */
@@ -38,7 +38,7 @@ class Member extends Entity
         'email' => true,
         'created' => true,
         'modified' => true,
-        'member_ffs_diagnoses' => true,
+        'member_ffs_diagnosis' => true,
         'member_stresses' => true,
         'team_members' => true,
     ];

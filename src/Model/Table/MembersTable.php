@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Members Model
  *
- * @property \App\Model\Table\MemberFfsDiagnosesTable&\Cake\ORM\Association\HasMany $MemberFfsDiagnoses
+ * @property \App\Model\Table\MemberFfsDiagnosesTable&\Cake\ORM\Association\HasOne $MemberFfsDiagnosis
  * @property \App\Model\Table\MemberStressesTable&\Cake\ORM\Association\HasMany $MemberStresses
  * @property \App\Model\Table\TeamMembersTable&\Cake\ORM\Association\HasMany $TeamMembers
  *
@@ -49,7 +49,7 @@ class MembersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('MemberFfsDiagnoses', [
+        $this->hasOne('MemberFfsDiagnoses', [
             'foreignKey' => 'member_id',
         ]);
         $this->hasMany('MemberStresses', [
