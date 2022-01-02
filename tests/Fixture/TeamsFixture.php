@@ -21,8 +21,9 @@ class TeamsFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2021-12-30 03:12:11',
-                'modified' => '2021-12-30 03:12:11',
+                'member_id' => 1,
+                'created' => '2022-01-02 06:58:43',
+                'modified' => '2022-01-02 06:58:43',
             ],
         ];
         parent::init();

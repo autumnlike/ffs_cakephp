@@ -303,6 +303,13 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
+            ->addColumn('member_id', 'integer', [
+                'comment' => '作成者 members.id',
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+                'signed' => false,
+            ])
             ->addColumn('created', 'datetime', [
                 'default' => null,
                 'limit' => null,

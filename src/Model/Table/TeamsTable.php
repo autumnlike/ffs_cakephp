@@ -47,6 +47,10 @@ class TeamsTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Members', [
+            'foreignKey' => 'member_id',
+            'joinType' => 'INNER',
+        ]);
         $this->hasMany('TeamMembers', [
             'foreignKey' => 'team_id',
         ]);
@@ -83,6 +87,7 @@ class TeamsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['name']), ['errorField' => 'name']);
+        $rules->add($rules->existsIn('member_id', 'Members'), ['errorField' => 'member_id']);
 
         return $rules;
     }

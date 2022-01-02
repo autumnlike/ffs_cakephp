@@ -25,6 +25,7 @@ class TeamsTableTest extends TestCase
      */
     protected $fixtures = [
         'app.Teams',
+        'app.Members',
         'app.TeamMembers',
     ];
 
