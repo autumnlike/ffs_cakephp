@@ -6,10 +6,46 @@
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<h3 class="mb-5"><?= h($team->name) ?></h3>
+<div class="members view row mb-2">
+    <h4>メンバーの追加</h4>
+    <div class="column-responsive column-80">
+        <div class="teamMembers form content">
+            <?= $this->Form->create($teamMember, [
+                'url' => [
+                    'controller' => 'team_members',
+                    'action' => 'add',
+                ],
+                'class' => 'row row-cols-lg-auto g-3 align-items-center'],
+            ) ?>
+            <fieldset>
+                <div class="form-group mr-2 col-3">
+                    <?php
+                        echo $this->Form->control('team_id', ['type' => 'hidden', 'value' => $team->id]);
+                        echo $this->Form->control('member_id', [
+                            'type' => 'text',
+                            'list'=>'allergens',
+                            'onkeyup'=>'getallergen(this.value)',
+                            'label' => false,
+                        ]);
+
+                    ?>
+                    <datalist id="allergens">
+                        <?php foreach ($members as $member) { ?>
+                            <option label="<?= $member->name . '/' . $member->email ?>" value="<?= $member->id ?>"></option>
+                        <?php } ?>
+                    </datalist>
+            </div>
+            </fieldset>
+            <?= $this->Form->button('追加', ['class' => 'btn btn-primary']) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>
+
 <div class="members view row">
-    <h3 class="mb-5"><?= h($team->name) ?></h3>
+    <h4 class="mt-5"><?= __('メンバー一覧') ?></h4>
     <canvas id="diagnosisChart"></canvas>
-    <h2 class="mt-5"><?= __('メンバー一覧') ?></h2>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
@@ -22,6 +58,7 @@
                     <th><?= $this->Paginator->sort('MemberFfsDiagnoses.e', 'E: 保全姓') ?></th>
                     <th><?= $this->Paginator->sort('MemberFfsDiagnoses.four_type', '4type') ?></th>
                     <th><?= $this->Paginator->sort('MemberFfsDiagnoses.ninety_one_type', '91type') ?></th>
+                    <th>削除</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +66,7 @@
                 <?php $member = $teamMember->member ?>
                 <tr>
                     <td>
-                        <?= $this->Html->link($member->name, ['action' => 'view', $member->id]) ?>
+                        <?= $this->Html->link($member->name, ['controller' => 'members', 'action' => 'view', $member->id]) ?>
                         <br/>
                         <span class="fw-lighter small"><?= h($member->email) ?></span>
                     </td>
@@ -40,6 +77,20 @@
                     <td><?= h($member->member_ffs_diagnosis->e) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->four_type) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->ninety_one_type) ?></td>
+                    <td>
+                        <?= $this->Form->postLink(
+                            '<i class="bi bi-trash"></i>',
+                            [
+                                'controller' => 'team_members',
+                                'action' => 'delete',
+                                $teamMember->id,
+                            ],
+                            [
+                                'confirm' => '削除して良いですか?',
+                                'escape' => false,
+                            ]
+                        ) ?>
+                    </td>
                 </tr>
                 <?php } ?>
             </tbody>
