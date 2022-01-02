@@ -20,7 +20,7 @@
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
   </head>
-  <body>
+  <body class="small">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="<?= $this->Url->build('/') ?>">FFS</a>

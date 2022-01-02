@@ -28,11 +28,11 @@
                         <br/>
                         <span class="fw-lighter small"><?= h($member->email) ?></span>
                     </td>
-                    <td><?= h($member->member_ffs_diagnosis->a) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->b) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->c) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->d) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->e) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'A')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'A') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->a) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'B')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'B') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->b) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'C')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'C') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->c) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'D')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'D') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->d) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'E')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'E') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->e) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->four_type) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->ninety_one_type) ?></td>
                 </tr>

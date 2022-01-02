@@ -46,35 +46,35 @@
 <div class="members view row">
     <h4 class="mt-5"><?= __('メンバー一覧') ?></h4>
     <canvas id="diagnosisChart"></canvas>
-    <div class="table-responsive">
+    <div class="table-responsive mt-3">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('Members.email', '名前') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.a', 'A: 凝縮姓') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.b', 'B: 受容性') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.c', 'C: 弁別姓') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.d', 'D: 拡散性') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.e', 'E: 保全姓') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.four_type', '4type') ?></th>
-                    <th><?= $this->Paginator->sort('MemberFfsDiagnoses.ninety_one_type', '91type') ?></th>
+                    <th>名前</th>
+                    <th>A: 凝縮姓</th>
+                    <th>B: 受容性</th>
+                    <th>C: 弁別姓</th>
+                    <th>D: 拡散性</th>
+                    <th>E: 保全姓</th>
+                    <th>4type</th>
+                    <th>91type</th>
                     <th>削除</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($team->team_members as $teamMember) { ?>
                 <?php $member = $teamMember->member ?>
-                <tr>
+                <tr class="align-middle">
                     <td>
                         <?= $this->Html->link($member->name, ['controller' => 'members', 'action' => 'view', $member->id]) ?>
                         <br/>
                         <span class="fw-lighter small"><?= h($member->email) ?></span>
                     </td>
-                    <td><?= h($member->member_ffs_diagnosis->a) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->b) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->c) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->d) ?></td>
-                    <td><?= h($member->member_ffs_diagnosis->e) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'A')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'A') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->a) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'B')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'B') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->b) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'C')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'C') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->c) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'D')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'D') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->d) ?></td>
+                    <td class="<?php if (strstr($member->member_ffs_diagnosis->ninety_one_type, 'E')) echo 'fw-bold' ?><?php if (strpos($member->member_ffs_diagnosis->ninety_one_type, 'E') === 0) echo ' text-primary' ?>"><?= h($member->member_ffs_diagnosis->e) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->four_type) ?></td>
                     <td><?= h($member->member_ffs_diagnosis->ninety_one_type) ?></td>
                     <td>
