@@ -29,6 +29,7 @@ class TeamsController extends AppController
         $teams = $this->paginate($this->Teams);
 
         $this->set(compact('teams'));
+        $this->viewBuilder()->setOption('serialize', ['teams']);
     }
 
     /**
@@ -41,10 +42,13 @@ class TeamsController extends AppController
     public function view($id = null)
     {
         $team = $this->Teams->get($id, [
-            'contain' => ['Members', 'TeamMembers'],
+            'contain' => [
+                'TeamMembers' => ['Members' => ['MemberFfsDiagnoses']]
+            ],
         ]);
 
         $this->set(compact('team'));
+        $this->viewBuilder()->setOption('serialize', ['team']);
     }
 
     /**

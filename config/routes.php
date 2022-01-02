@@ -76,6 +76,7 @@ return static function (RouteBuilder $routes) {
     $routes->scope('/api', function (RouteBuilder $routes) {
         $routes->setExtensions(['json']);
         $routes->resources('Members');
+        $routes->resources('Teams');
     });
 
     /*

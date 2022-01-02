@@ -19,7 +19,9 @@
             <tbody>
                 <?php foreach ($teams as $team): ?>
                 <tr>
-                    <td><?= h($team->name) ?></td>
+                    <td>
+                        <?= $this->Html->link($team->name, ['action' => 'view', $team->id]) ?>
+                    </td>
                     <td>
                         <?php foreach ($team->team_members as $key => $teamMember) {
                             if ($key !== 0) {

@@ -5,7 +5,7 @@
  */
 ?>
 <div class="members index row">
-    <h2><?= __('メンバー一覧') ?></h3>
+    <h2><?= __('メンバー一覧') ?></h2>
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
