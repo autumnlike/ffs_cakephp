@@ -317,7 +317,9 @@ return [
              * decreases performance because each query needs to be traversed and
              * manipulated before being executed.
              */
-            'quoteIdentifiers' => false,
+            // NOTE カラム名で `members.key` を利用するため
+            // 'quoteIdentifiers' => false,
+            'quoteIdentifiers' => true,
 
             /*
              * During development, if using MySQL < 5.6, uncommenting the
