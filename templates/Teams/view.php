@@ -62,7 +62,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($members as $member) { ?>
+                <?php foreach ($team->members as $member) { ?>
                 <tr class="align-middle">
                     <td>
                         <?= $this->Html->link($member->name, ['controller' => 'members', 'action' => 'view', $member->id]) ?>
@@ -108,7 +108,7 @@
   const diagnosisData = {
     labels: diagnosisLabels,
     datasets: [
-        <?php foreach ($members as $member) { ?>
+        <?php foreach ($team->members as $member) { ?>
             <?php $color = array_shift($colors) ?>
             {
                 label: '<?= h($member->name) ?> <?= $member->member_ffs_diagnosis->ninety_one_type ?>',

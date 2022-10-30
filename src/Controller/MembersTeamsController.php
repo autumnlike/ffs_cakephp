@@ -19,6 +19,7 @@ class MembersTeamsController extends AppController
     public function add()
     {
         $this->request->allowMethod(['post']);
+        $membersTeam = $this->MembersTeams->newEmptyEntity();
         $membersTeam = $this->MembersTeams->patchEntity($membersTeam, $this->request->getData());
         if ($this->MembersTeams->save($membersTeam)) {
             $this->Flash->success(__('The team member has been saved.'));

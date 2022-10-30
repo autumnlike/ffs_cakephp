@@ -50,7 +50,8 @@ class TeamsController extends AppController
         $this->set(compact('team'));
         $this->viewBuilder()->setOption('serialize', ['team']);
         $membersTeam = $this->Teams->MembersTeams->newEmptyEntity();
-        $members = $team->members;
+        // todo 既存メンバーの除去
+        $members = $this->Teams->Members->find()->limit(200)->all();
         $this->set(compact('membersTeam', 'members'));
     }
 
