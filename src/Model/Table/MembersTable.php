@@ -13,7 +13,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\MemberFfsDiagnosesTable&\Cake\ORM\Association\HasOne $MemberFfsDiagnosis
  * @property \App\Model\Table\MemberStressesTable&\Cake\ORM\Association\HasMany $MemberStresses
- * @property \App\Model\Table\TeamMembersTable&\Cake\ORM\Association\HasMany $TeamMembers
+ * @property \App\Model\Table\MembersTeamsTable&\Cake\ORM\Association\HasMany $MembersTeams
  *
  * @method \App\Model\Entity\Member newEmptyEntity()
  * @method \App\Model\Entity\Member newEntity(array $data, array $options = [])

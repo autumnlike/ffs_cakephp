@@ -24,7 +24,7 @@ class TeamsControllerTest extends TestCase
     protected $fixtures = [
         'app.Teams',
         'app.Members',
-        'app.TeamMembers',
+        'app.MembersTeams',
     ];
 
     /**

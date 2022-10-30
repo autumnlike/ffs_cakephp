@@ -244,7 +244,7 @@ class Initial extends AbstractMigration
             ])
             ->create();
 
-        $this->table('team_members', ['id' => false, 'primary_key' => ['id']])
+        $this->table('members_teams', ['id' => false, 'primary_key' => ['id']])
             ->addColumn('id', 'biginteger', [
                 'autoIncrement' => true,
                 'default' => null,
@@ -343,7 +343,7 @@ class Initial extends AbstractMigration
         $this->table('member_ffs_diagnoses')->drop()->save();
         $this->table('member_stresses')->drop()->save();
         $this->table('members')->drop()->save();
-        $this->table('team_members')->drop()->save();
+        $this->table('members_teams')->drop()->save();
         $this->table('teams')->drop()->save();
     }
 }

@@ -25,7 +25,7 @@ class MembersControllerTest extends TestCase
         'app.Members',
         'app.MemberFfsDiagnoses',
         'app.MemberStresses',
-        'app.TeamMembers',
+        'app.MembersTeams',
     ];
 
     /**

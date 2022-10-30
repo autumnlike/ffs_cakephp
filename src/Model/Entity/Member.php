@@ -18,7 +18,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\MemberFfsDiagnosis $member_ffs_diagnosis
  * @property \App\Model\Entity\MemberStress[] $member_stresses
- * @property \App\Model\Entity\TeamMember[] $team_members
+ * @property \App\Model\Entity\MembersTeam[] $members_teams
  */
 class Member extends Entity
 {
@@ -40,6 +40,6 @@ class Member extends Entity
         'modified' => true,
         'member_ffs_diagnosis' => true,
         'member_stresses' => true,
-        'team_members' => true,
+        'members_teams' => true,
     ];
 }

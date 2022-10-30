@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\TeamMembersController;
+use App\Controller\MembersTeamsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\TeamMembersController Test Case
+ * App\Controller\MembersTeamsController Test Case
  *
- * @uses \App\Controller\TeamMembersController
+ * @uses \App\Controller\MembersTeamsController
  */
-class TeamMembersControllerTest extends TestCase
+class MembersTeamsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,7 +22,7 @@ class TeamMembersControllerTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.TeamMembers',
+        'app.MembersTeams',
         'app.Teams',
         'app.Members',
     ];
@@ -31,7 +31,7 @@ class TeamMembersControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\TeamMembersController::add()
+     * @uses \App\Controller\MembersTeamsController::add()
      */
     public function testAdd(): void
     {
@@ -42,7 +42,7 @@ class TeamMembersControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\TeamMembersController::delete()
+     * @uses \App\Controller\MembersTeamsController::delete()
      */
     public function testDelete(): void
     {

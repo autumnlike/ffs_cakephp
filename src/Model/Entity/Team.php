@@ -15,7 +15,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Member $member
- * @property \App\Model\Entity\TeamMember[] $team_members
+ * @property \App\Model\Entity\MembersTeam[] $members_teams
  */
 class Team extends Entity
 {
@@ -34,6 +34,6 @@ class Team extends Entity
         'created' => true,
         'modified' => true,
         'auther' => true,
-        'team_members' => true,
+        'members_teams' => true,
     ];
 }

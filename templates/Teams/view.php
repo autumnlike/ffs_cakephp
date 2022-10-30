@@ -13,7 +13,7 @@
         <div class="teamMembers form content">
             <?= $this->Form->create($membersTeam, [
                 'url' => [
-                    'controller' => 'team_members',
+                    'controller' => 'members_teams',
                     'action' => 'add',
                 ],
                 'class' => 'row row-cols-lg-auto g-3 align-items-center'],
@@ -80,7 +80,7 @@
                         <?= $this->Form->postLink(
                             '<i class="bi bi-trash"></i>',
                             [
-                                'controller' => 'team_members',
+                                'controller' => 'members_teams',
                                 'action' => 'delete',
                                 $member->members_team->id,
                             ],

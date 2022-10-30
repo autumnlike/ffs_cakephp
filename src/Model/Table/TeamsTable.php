@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Teams Model
  *
- * @property \App\Model\Table\TeamMembersTable&\Cake\ORM\Association\HasMany $TeamMembers
+ * @property \App\Model\Table\MembersTeamsTable&\Cake\ORM\Association\HasMany $MembersTeams
  *
  * @method \App\Model\Entity\Team newEmptyEntity()
  * @method \App\Model\Entity\Team newEntity(array $data, array $options = [])

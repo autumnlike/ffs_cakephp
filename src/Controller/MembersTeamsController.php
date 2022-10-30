@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace App\Controller;
 
 /**
- * TeamMembers Controller
+ * MembersTeams Controller
  *
- * @property \App\Model\Table\TeamMembersTable $TeamMembers
- * @method \App\Model\Entity\TeamMember[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @property \App\Model\Table\MembersTeamsTable $MembersTeams
+ * @method \App\Model\Entity\MembersTeam[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class TeamMembersController extends AppController
+class MembersTeamsController extends AppController
 {
     /**
      * Add method
@@ -19,8 +19,8 @@ class TeamMembersController extends AppController
     public function add()
     {
         $this->request->allowMethod(['post']);
-        $teamMember = $this->TeamMembers->patchEntity($teamMember, $this->request->getData());
-        if ($this->TeamMembers->save($teamMember)) {
+        $membersTeam = $this->MembersTeams->patchEntity($membersTeam, $this->request->getData());
+        if ($this->MembersTeams->save($membersTeam)) {
             $this->Flash->success(__('The team member has been saved.'));
         } else {
             $this->Flash->error(__('The team member could not be saved. Please, try again.'));
@@ -38,8 +38,8 @@ class TeamMembersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $teamMember = $this->TeamMembers->get($id);
-        if ($this->TeamMembers->delete($teamMember)) {
+        $membersTeam = $this->MembersTeams->get($id);
+        if ($this->MembersTeams->delete($membersTeam)) {
             $this->Flash->success(__('The team member has been deleted.'));
         } else {
             $this->Flash->error(__('The team member could not be deleted. Please, try again.'));
