@@ -6,7 +6,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * TeamMember Entity
+ * MembersTeam Entity
  *
  * @property int $id
  * @property int $team_id
@@ -17,7 +17,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Team $team
  * @property \App\Model\Entity\Member $member
  */
-class TeamMember extends Entity
+class MembersTeam extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().

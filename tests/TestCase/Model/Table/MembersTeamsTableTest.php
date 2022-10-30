@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\TeamMembersTable;
+use App\Model\Table\MembersTeamsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\TeamMembersTable Test Case
+ * App\Model\Table\MembersTeamsTable Test Case
  */
-class TeamMembersTableTest extends TestCase
+class MembersTeamsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\TeamMembersTable
+     * @var \App\Model\Table\MembersTeamsTable
      */
-    protected $TeamMembers;
+    protected $MembersTeams;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class TeamMembersTableTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'app.TeamMembers',
+        'app.MembersTeams',
         'app.Teams',
         'app.Members',
     ];
@@ -37,8 +37,8 @@ class TeamMembersTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('TeamMembers') ? [] : ['className' => TeamMembersTable::class];
-        $this->TeamMembers = $this->getTableLocator()->get('TeamMembers', $config);
+        $config = $this->getTableLocator()->exists('MembersTeams') ? [] : ['className' => MembersTeamsTable::class];
+        $this->MembersTeams = $this->getTableLocator()->get('MembersTeams', $config);
     }
 
     /**
@@ -48,7 +48,7 @@ class TeamMembersTableTest extends TestCase
      */
     public function tearDown(): void
     {
-        unset($this->TeamMembers);
+        unset($this->MembersTeams);
 
         parent::tearDown();
     }
@@ -57,7 +57,7 @@ class TeamMembersTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\TeamMembersTable::validationDefault()
+     * @uses \App\Model\Table\MembersTeamsTable::validationDefault()
      */
     public function testValidationDefault(): void
     {
@@ -68,7 +68,7 @@ class TeamMembersTableTest extends TestCase
      * Test buildRules method
      *
      * @return void
-     * @uses \App\Model\Table\TeamMembersTable::buildRules()
+     * @uses \App\Model\Table\MembersTeamsTable::buildRules()
      */
     public function testBuildRules(): void
     {

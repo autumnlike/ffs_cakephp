@@ -55,9 +55,8 @@ class MembersTable extends Table
         $this->hasMany('MemberStresses', [
             'foreignKey' => 'member_id',
         ]);
-        $this->hasMany('TeamMembers', [
-            'foreignKey' => 'member_id',
-        ]);
+        $this->belongsToMany('Teams');
+        $this->hasOne('MembersTeams');
     }
 
     /**

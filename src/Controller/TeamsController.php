@@ -22,7 +22,7 @@ class TeamsController extends AppController
             'sortableFields' => [
                 'Teams.name',
             ],
-            'contain' => ['Members', 'TeamMembers' => ['Members']],
+            'contain' => ['Members'],
             'limit' => 500,
             'maxLimit' => 500,
         ];
@@ -43,15 +43,15 @@ class TeamsController extends AppController
     {
         $team = $this->Teams->get($id, [
             'contain' => [
-                'TeamMembers' => ['Members' => ['MemberFfsDiagnoses']]
+                'Members' => ['MemberFfsDiagnoses', 'MembersTeams']
             ],
         ]);
 
         $this->set(compact('team'));
         $this->viewBuilder()->setOption('serialize', ['team']);
-        $teamMember = $this->Teams->TeamMembers->newEmptyEntity();
-        $members = $this->Teams->TeamMembers->Members->find()->limit(200)->all();
-        $this->set(compact('teamMember', 'members'));
+        $membersTeam = $this->Teams->MembersTeams->newEmptyEntity();
+        $members = $team->members;
+        $this->set(compact('membersTeam', 'members'));
     }
 
     /**

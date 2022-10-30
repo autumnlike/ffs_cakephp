@@ -23,11 +23,11 @@
                         <?= $this->Html->link($team->name, ['action' => 'view', $team->id]) ?>
                     </td>
                     <td>
-                        <?php foreach ($team->team_members as $key => $teamMember) {
+                        <?php foreach ($team->members as $key => $member) {
                             if ($key !== 0) {
                                 echo ' / ';
                             }
-                            echo h($teamMember->member->name);
+                            echo h($member->name);
                         } ?>
                     </td>
                     <td class="actions">

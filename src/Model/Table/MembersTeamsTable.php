@@ -9,28 +9,28 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * TeamMembers Model
+ * MembersTeams Model
  *
  * @property \App\Model\Table\TeamsTable&\Cake\ORM\Association\BelongsTo $Teams
  * @property \App\Model\Table\MembersTable&\Cake\ORM\Association\BelongsTo $Members
  *
- * @method \App\Model\Entity\TeamMember newEmptyEntity()
- * @method \App\Model\Entity\TeamMember newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\TeamMember[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\TeamMember get($primaryKey, $options = [])
- * @method \App\Model\Entity\TeamMember findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\TeamMember patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\TeamMember[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\TeamMember|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TeamMember saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\TeamMember[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\TeamMember[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\TeamMember[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\TeamMember[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\MembersTeam newEmptyEntity()
+ * @method \App\Model\Entity\MembersTeam newEntity(array $data, array $options = [])
+ * @method \App\Model\Entity\MembersTeam[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\MembersTeam get($primaryKey, $options = [])
+ * @method \App\Model\Entity\MembersTeam findOrCreate($search, ?callable $callback = null, $options = [])
+ * @method \App\Model\Entity\MembersTeam patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\MembersTeam[] patchEntities(iterable $entities, array $data, array $options = [])
+ * @method \App\Model\Entity\MembersTeam|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\MembersTeam saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\MembersTeam[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\MembersTeam[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
+ * @method \App\Model\Entity\MembersTeam[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
+ * @method \App\Model\Entity\MembersTeam[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class TeamMembersTable extends Table
+class MembersTeamsTable extends Table
 {
     /**
      * Initialize method
@@ -42,7 +42,7 @@ class TeamMembersTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('team_members');
+        $this->setTable('members_teams');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 

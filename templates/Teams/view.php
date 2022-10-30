@@ -11,7 +11,7 @@
     <h4>メンバーの追加</h4>
     <div class="column-responsive column-80">
         <div class="teamMembers form content">
-            <?= $this->Form->create($teamMember, [
+            <?= $this->Form->create($membersTeam, [
                 'url' => [
                     'controller' => 'team_members',
                     'action' => 'add',
@@ -62,8 +62,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($team->team_members as $teamMember) { ?>
-                <?php $member = $teamMember->member ?>
+                <?php foreach ($members as $member) { ?>
                 <tr class="align-middle">
                     <td>
                         <?= $this->Html->link($member->name, ['controller' => 'members', 'action' => 'view', $member->id]) ?>
@@ -83,7 +82,7 @@
                             [
                                 'controller' => 'team_members',
                                 'action' => 'delete',
-                                $teamMember->id,
+                                $member->members_team->id,
                             ],
                             [
                                 'confirm' => '削除して良いですか?',
@@ -109,8 +108,7 @@
   const diagnosisData = {
     labels: diagnosisLabels,
     datasets: [
-        <?php foreach ($team->team_members as $teamMember) { ?>
-            <?php $member = $teamMember->member ?>
+        <?php foreach ($members as $member) { ?>
             <?php $color = array_shift($colors) ?>
             {
                 label: '<?= h($member->name) ?> <?= $member->member_ffs_diagnosis->ninety_one_type ?>',

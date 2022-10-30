@@ -47,11 +47,9 @@ class TeamsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Members', [
-            'foreignKey' => 'member_id',
-            'joinType' => 'INNER',
-        ]);
-        $this->hasMany('TeamMembers', [
+        $this->belongsToMany('Members');
+
+        $this->hasMany('MembersTeams', [
             'foreignKey' => 'team_id',
         ]);
     }
