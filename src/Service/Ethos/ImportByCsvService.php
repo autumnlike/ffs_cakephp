@@ -37,6 +37,7 @@ class ImportByCsvService
                 // 先頭行はヘッダ
                 continue;
             }
+            // TODO 診断されてないデータは無視する
             // TODO 同じ人は重複させない
             $member = $membersTable->newEmptyEntity();
             $member->key = $row[1];
