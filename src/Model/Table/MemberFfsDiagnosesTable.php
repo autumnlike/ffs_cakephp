@@ -7,6 +7,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Model\Entity\MemberFfsDiagnosis;
 
 /**
  * MemberFfsDiagnoses Model
@@ -108,5 +109,25 @@ class MemberFfsDiagnosesTable extends Table
         $rules->add($rules->existsIn('member_id', 'Members'), ['errorField' => 'member_id']);
 
         return $rules;
+    }
+
+    public function createByEthos(int $memberId, array $row): MemberFfsDiagnosis
+    {
+        $entity = $this->findOrCreate([
+            'member_id' => $memberId,
+        ]);
+        if ($entity) {
+            return $entity;
+        }
+
+        $entity->a = $row[7];
+        $entity->b = $row[8];
+        $entity->c = $row[9];
+        $entity->d = $row[10];
+        $entity->e = $row[11];
+        $entity->four_type = $row[13];
+        $entity->ninety_one_type = $row[14];
+        $this->saveOrFail($entity);
+        return $entity;
     }
 }

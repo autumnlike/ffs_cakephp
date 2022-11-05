@@ -7,6 +7,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Model\Entity\Member;
 
 /**
  * Members Model
@@ -90,5 +91,20 @@ class MembersTable extends Table
             ->allowEmptyString('email');
 
         return $validator;
+    }
+
+    public function createByEthos(array $row): Member
+    {
+        $entity = $this->findOrCreate([
+            'key' => $row[1],
+            'email' => $row[2],
+            'name' => $row[3] . $row[4]
+        ]);
+        if ($entity->id) {
+            return $entity;
+        }
+
+        $this->saveOrFail($entity);
+        return $entity;
     }
 }

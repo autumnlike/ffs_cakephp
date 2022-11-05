@@ -7,6 +7,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\I18n\FrozenTime;
+use App\Model\Entity\MemberStress;
 
 /**
  * MemberStresses Model
@@ -86,5 +88,29 @@ class MemberStressesTable extends Table
         $rules->add($rules->existsIn('member_id', 'Members'), ['errorField' => 'member_id']);
 
         return $rules;
+    }
+
+    public function createAllByEthos(int $memberId, array $row): array
+    {
+        $return = [];
+        foreach ([18, 20, 22, 24, 26, 28] as $key) {
+            if ((bool)$row[$key] === FALSE) {
+                // 直近から入るのでこれ以降入ることは無い
+                break;
+            }
+
+            $entity = $this->findOrCreate([
+                'member_id' => $memberId,
+                'point' => $row[$key],
+                'diagnostic_at' => new FrozenTime($row[$key+1])
+            ]);
+            if ($entity) {
+                continue;
+            }
+
+            $this->saveOrFail($entity);
+            $return[] = $entity;
+        }
+        return $return;
     }
 }
