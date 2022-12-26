@@ -98,7 +98,6 @@ class MemberStressesTable extends Table
                 // 直近から入るのでこれ以降入ることは無い
                 break;
             }
-
             $entity = $this->findOrCreate([
                 'member_id' => $memberId,
                 'point' => $row[$key],

@@ -78,8 +78,7 @@ class MembersTable extends Table
 
         $validator
             ->scalar('name')
-            ->maxLength('name', 255)
-            ->allowEmptyString('name');
+            ->maxLength('name', 255);
 
         $validator
             ->scalar('name_en')
@@ -87,26 +86,17 @@ class MembersTable extends Table
             ->allowEmptyString('name_en');
 
         $validator
-            ->email('email')
-            ->allowEmptyString('email');
+            ->email('email');
 
         return $validator;
     }
 
     public function findOrCreateByEthos(array $row): Member
     {
-        $entity = $this->findOrCreate([
+        return $this->findOrCreate([
             'key' => $row[1],
             'email' => $row[2],
             'name' => $row[3] . $row[4]
         ]);
-        // TODO 必ずtrueになるので意味のない分岐
-        // バリデーションができてないので追加が必要
-        if ($entity->id) {
-            return $entity;
-        }
-
-        $this->saveOrFail($entity);
-        return $entity;
     }
 }

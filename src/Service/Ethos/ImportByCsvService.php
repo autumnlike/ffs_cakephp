@@ -50,6 +50,7 @@ class ImportByCsvService
             $connection->commit();
         } catch (\Exception $e) {
             $connection->rollback();
+            throw $e;
         }
     }
 

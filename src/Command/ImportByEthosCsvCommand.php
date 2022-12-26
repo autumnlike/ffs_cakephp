@@ -21,7 +21,7 @@ class ImportByEthosCsvCommand extends Command
         $filename = TMP . 'ETHOS.csv';
         try {
             ImportByCsvService::import($filename);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $io->abort($e->getMessage());
         }
     }
