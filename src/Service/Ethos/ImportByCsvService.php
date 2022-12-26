@@ -41,6 +41,7 @@ class ImportByCsvService
                     // 診断前のデータも入ってくる
                     continue;
                 }
+                $row = self::replaceInvalidString($row);
 
                 $member = $membersTable->findOrCreateByEthos($row);
                 $memberFfsDiagnos = $memberFfsDiagnosesTable->findOrCreateByEthos($member->id, $row);
@@ -50,5 +51,14 @@ class ImportByCsvService
         } catch (\Exception $e) {
             $connection->rollback();
         }
+    }
+
+    private static function replaceInvalidString(array $row): array
+    {
+        foreach ($row as $key => $value) {
+            // ETHOS CSVダウンロードデータに `""` が混入する
+            $row[$key] = str_replace('""', '', $value);
+        }
+        return $row;
     }
 }

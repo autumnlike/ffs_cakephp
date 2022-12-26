@@ -94,7 +94,7 @@ class MemberStressesTable extends Table
     {
         $return = [];
         foreach ([18, 20, 22, 24, 26, 28] as $key) {
-            if ((bool)$row[$key] === FALSE) {
+            if (empty($row[$key]) || (bool)$row[$key] === FALSE) {
                 // 直近から入るのでこれ以降入ることは無い
                 break;
             }
