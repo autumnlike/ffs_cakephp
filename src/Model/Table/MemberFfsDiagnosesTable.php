@@ -111,12 +111,12 @@ class MemberFfsDiagnosesTable extends Table
         return $rules;
     }
 
-    public function createByEthos(int $memberId, array $row): MemberFfsDiagnosis
+    public function findOrCreateByEthos(int $memberId, array $row): MemberFfsDiagnosis
     {
         $entity = $this->findOrCreate([
             'member_id' => $memberId,
         ]);
-        if ($entity) {
+        if ($entity->a) {
             return $entity;
         }
 

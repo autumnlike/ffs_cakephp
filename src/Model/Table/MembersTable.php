@@ -93,13 +93,15 @@ class MembersTable extends Table
         return $validator;
     }
 
-    public function createByEthos(array $row): Member
+    public function findOrCreateByEthos(array $row): Member
     {
         $entity = $this->findOrCreate([
             'key' => $row[1],
             'email' => $row[2],
             'name' => $row[3] . $row[4]
         ]);
+        // TODO 必ずtrueになるので意味のない分岐
+        // バリデーションができてないので追加が必要
         if ($entity->id) {
             return $entity;
         }

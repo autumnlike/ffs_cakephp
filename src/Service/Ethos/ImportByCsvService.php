@@ -42,8 +42,8 @@ class ImportByCsvService
                     continue;
                 }
 
-                $member = $membersTable->createByEthos($row);
-                $memberFfsDiagnos = $memberFfsDiagnosesTable->createByEthos($member->id, $row);
+                $member = $membersTable->findOrCreateByEthos($row);
+                $memberFfsDiagnos = $memberFfsDiagnosesTable->findOrCreateByEthos($member->id, $row);
                 $memberStressesTable->createAllByEthos($member->id, $row);
             }
             $connection->commit();
