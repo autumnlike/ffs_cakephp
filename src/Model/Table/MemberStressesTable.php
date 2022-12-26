@@ -67,11 +67,10 @@ class MemberStressesTable extends Table
 
         $validator
             ->integer('point')
-            ->allowEmptyString('point');
+            ->range('point', [0, 20], 'ストレス値は 0 ~ 20 で指定してください');
 
         $validator
-            ->date('diagnostic_at')
-            ->allowEmptyDate('diagnostic_at');
+            ->date('diagnostic_at');
 
         return $validator;
     }

@@ -66,33 +66,31 @@ class MemberFfsDiagnosesTable extends Table
 
         $validator
             ->integer('a')
-            ->allowEmptyString('a');
+            ->range('a', [0, 20], '因子値は 0 ~ 20 で指定してください');
 
         $validator
             ->integer('b')
-            ->allowEmptyString('b');
+            ->range('b', [0, 20], '因子値は 0 ~ 20 で指定してください');
 
         $validator
             ->integer('c')
-            ->allowEmptyString('c');
+            ->range('c', [0, 20], '因子値は 0 ~ 20 で指定してください');
 
         $validator
             ->integer('d')
-            ->allowEmptyString('d');
+            ->range('d', [0, 20], '因子値は 0 ~ 20 で指定してください');
 
         $validator
             ->integer('e')
-            ->allowEmptyString('e');
+            ->range('e', [0, 20], '因子値は 0 ~ 20 で指定してください');
 
         $validator
             ->scalar('four_type')
-            ->maxLength('four_type', 255)
-            ->allowEmptyString('four_type');
+            ->inList('four_type', ['ML', 'TG', 'LM', 'AN'], '4タイプが不正です');
 
         $validator
             ->scalar('ninety_one_type')
-            ->maxLength('ninety_one_type', 255)
-            ->allowEmptyString('ninety_one_type');
+            ->regex('ninety_one_type', '/^[A-E]+?$/', '91タイプが不正です');
 
         return $validator;
     }
@@ -119,14 +117,16 @@ class MemberFfsDiagnosesTable extends Table
         if ($entity->a) {
             return $entity;
         }
+        $this->patchEntity($entity, [
+            'a' => $row[7],
+            'b' => $row[8],
+            'c' => $row[9],
+            'd' => $row[10],
+            'e' => $row[11],
+            'four_type' => $row[13],
+            'ninety_one_type' => $row[14],
+        ]);
 
-        $entity->a = $row[7];
-        $entity->b = $row[8];
-        $entity->c = $row[9];
-        $entity->d = $row[10];
-        $entity->e = $row[11];
-        $entity->four_type = $row[13];
-        $entity->ninety_one_type = $row[14];
         $this->saveOrFail($entity);
         return $entity;
     }
