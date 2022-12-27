@@ -51,3 +51,8 @@ docker exec -it ffsapi-app bash
 ```
 
 http://dev.ffsapi.com/members にて確認
+
+## 参考
+
+RVIRUS0817 さんの以下リポジトリを参考にさせていただきました！
+https://github.com/RVIRUS0817/dev_cakephp4

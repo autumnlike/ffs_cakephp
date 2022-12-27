@@ -10,14 +10,14 @@ class ImportByCsvService
 {
     public static function import(string $filename)
     {
-        $file = new SplFileObject($filename);
         // 事前チェック
         // ETHOSからダウンロード時に指定できるため
-        $encode = exec("nkf -g {$filename}");
-        if ($encode !== 'UTF-8') {
-            throw \Exception('ファイルがUTF-8ではありません: ' . $encode);
+        $encode = exec("file {$filename}");
+        if (strstr($encode, 'utf-8') === false && strstr($encode, 'UTF-8') === false) {
+            throw new \Exception('ファイルがUTF-8ではありません: ' . $encode);
         }
         
+        $file = new SplFileObject($filename);
         // @see https://www.php.net/manual/ja/class.splfileobject.php#splfileobject.constants
         $file->setFlags(
             SplFileObject::READ_CSV |
