@@ -1,84 +1,58 @@
-# dev_cakephp4
+# FFS Web from CakePHP
 
-![スクリーンショット 2020-12-30 0 01 40](https://user-images.githubusercontent.com/5633085/103293010-5df3a180-4a32-11eb-9e75-3e0cd01a3042.jpg)
+FFS 結果を共有できるウェブアプリ
 
+## Installation
 
-- docker images
-  - cakephp-app
-    - php:7.4-fpm-alpine (nginx,php-fpm,supervisor)
-	- cakephp 4.2.1
-  - cakephp-db
-    - mysql:8.0.27
-  - cakephp-redis
-
-
-- git clone or fork
+このリポジトリを clone してください
 
 ```
-mkdir -p ~/git/github
-cd ~/git/github
-git clone git@github.com:RVIRUS0817/dev_cakephp4.git
+git clone git@github.com:autumnlike/ffs_cakephp.git
 ```
 
-- add localhost /etc/hosts
+Docker 環境構築
 
 ```
-sudo vim /etc/hosts
-127.0.0.1 dev.adachin.com
+cd ffs_cakephp
+cp config/dotenv_sample config/.env
+cd docker
+docker compose up -d
 ```
 
-- docker run
-
+DB 生成
 ```
-cd dev_cakephp4
-cp config/.env.example config/.env
-cd docker/dev
-docker-compose up -d
+docker exec -it ffsapi-mysql bash
+mysql -u root -e 'create database ffs_api'
 ```
 
-- app deploy
+App コンテナ環境
 
 ```
-docker exec -it cakephp-app bash
-
+docker exec -it ffsapi-app bash
 composer install
 bin/cake migrations migrate
+bin/cake migrations seed
 supervisorctl restart app
-``` 
-
-- Access
-
-http://dev.adachin.com/
-
-
-![スクリーンショット 2020-12-29 23 59 18](https://user-images.githubusercontent.com/5633085/103292992-53390c80-4a32-11eb-9b12-63db925984e0.jpg)
-
-
-- DB login
-
-```
-docker exec -it cakephp-app bash
-mysql -u root -h db -p
 ```
 
-- redis login
+## ETHOS からの結果データをインポート
+
+ETHOSからデータをダウンロードしてください
+[ユーザー管理] > [ユーザー一覧] > [検索実行] > [全件CSVダウンロード] > [↓ UTF-8] にて CSVファイルをダウンロード
 
 ```
-docker exec -it cakephp-app bash
-redis-cli -h redis
+cp /path/to/ダウンロードファイル /path/to/ffs_cakephp/tmp/ETHOS.csv
 ```
 
-## How to cakephp4 download
-
-- https://book.cakephp.org/4/ja/installation.html
-- https://getcomposer.org/download/
-
+データインポート
 ```
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
-
-php composer.phar create-project --prefer-dist cakephp/app:4.* my_app_name
+docker exec -it ffsapi-app bash
+./bin/cake ImportByEthosCsv
 ```
+
+http://dev.ffsapi.com/members にて確認
+
+## 参考
+
+RVIRUS0817 さんの以下リポジトリを参考にさせていただきました！
+https://github.com/RVIRUS0817/dev_cakephp4
