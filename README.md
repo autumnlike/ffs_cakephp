@@ -10,28 +10,44 @@ FFS 結果を共有できるウェブアプリ
 git clone git@github.com:autumnlike/ffs_cakephp.git
 ```
 
-PHPが動く環境で composer install してください
+Docker 環境構築
 
 ```
-cd /path/to/ffs_cakephp
-compoeser install
+cd ffs_cakephp
+cp config/dotenv_sample config/.env
+cd docker
+docker compose up -d
 ```
 
-初期データ生成
+DB 生成
 ```
-mysql -u xxx -p xxx
-create database xxx;
+docker exec -it ffsapi-mysql bash
+mysql -u root -e 'create database ffs_api'
 ```
 
-スキーマ定義反映
+App コンテナ環境
+
 ```
+docker exec -it ffsapi-app bash
+composer install
 bin/cake migrations migrate
+bin/cake migrations seed
+supervisorctl restart app
 ```
 
 ## ETHOS からの結果データをインポート
 
 ETHOSからデータをダウンロードしてください
+[ユーザー管理] > [ユーザー一覧] > [検索実行] > [全件CSVダウンロード] > [↓ UTF-8] にて CSVファイルをダウンロード
 
-(wip) ダウンロード方法を書く
-(wip) インポート方法を書く
+```
+cp /path/to/ダウンロードファイル /path/to/ffs_cakephp/tmp/ETHOS.csv
+```
 
+データインポート
+```
+docker exec -it ffsapi-app bash
+./bin/cake ImportByEthosCsv
+```
+
+http://dev.ffsapi.com/members にて確認
