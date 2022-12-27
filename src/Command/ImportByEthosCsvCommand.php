@@ -18,7 +18,7 @@ class ImportByEthosCsvCommand extends Command
     public function execute(Arguments $args, ConsoleIo $io)
     {
         // 仮
-        $filename = TMP . 'ETHOS.csv';
+        $filename = TMP . 'ETHOS_sjis.csv';
         try {
             ImportByCsvService::import($filename);
         } catch (\Exception $e) {
