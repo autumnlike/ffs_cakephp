@@ -19,6 +19,15 @@ cd docker
 docker compose up -d
 ```
 
+Hosts 設定
+
+```
+$ sudo vi /etc/hosts
+
+# FFS API
+127.0.0.1 dev.ffsapi.com
+ ```
+
 DB 生成
 ```
 docker exec -it ffsapi-mysql bash
