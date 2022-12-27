@@ -40,6 +40,8 @@ supervisorctl restart app
 ETHOSからデータをダウンロードしてください
 [ユーザー管理] > [ユーザー一覧] > [検索実行] > [全件CSVダウンロード] > [↓ UTF-8] にて CSVファイルをダウンロード
 
+サンプルファイルは [ETHOS_sample_001.csv](https://github.com/autumnlike/ffs_cakephp/files/10306576/ETHOS_sample_001.csv)
+
 ```
 cp /path/to/ダウンロードファイル /path/to/ffs_cakephp/tmp/ETHOS.csv
 ```
