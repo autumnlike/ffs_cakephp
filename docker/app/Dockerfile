@@ -58,7 +58,8 @@ COPY php/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Install xdebug
 # エラーが出る
-# RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN apk add --update linux-headers
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 
 # composer install
