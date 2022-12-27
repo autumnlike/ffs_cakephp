@@ -30,3 +30,8 @@ Thumbs.db
 *~
 *.swp
 *.swo
+
+# Docker files #
+################
+/docker/mysql/db_data
+/docker/redis/db_data
